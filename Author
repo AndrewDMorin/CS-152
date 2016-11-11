@@ -1,0 +1,65 @@
+public class Author {
+    
+    private String lastName;
+    private String firstName;
+    private int birthday = -4000;
+    private int deathday = -4000;
+    
+    
+    
+    public Author( String lastName, String firstName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    public int getBirth(){
+        return birthday;
+    }
+    
+    public int getDeath(){
+        return deathday;
+    }
+    
+    public void setYears( int birth ){
+        if (birth > -2000 && birth < 2021){
+            birthday = birth;
+        }
+    }
+
+   public void setYears( int birth, int death ){
+       if (birth > -2000 && birth < 2021 &&
+           death > birth && death < 2021){
+           birthday = birth;
+           deathday = death;
+       }
+       
+   }
+    public boolean isSame( Author other ){
+        if (this.firstName == other.firstName &&
+            this.lastName == other.lastName) {
+            return true;
+        } if (this.firstName.length() == 1 ||
+              other.firstName.length() == 1){
+            if (this.firstName.charAt(0) == other.firstName.charAt(0)) {
+                return true;
+            }
+        } return false;
+        
+    }
+    public String toString(){
+        return (lastName + ", " + firstName);
+        
+    }
+    public String infoString(){
+        if (birthday == -4000 && deathday == -4000){
+            return (lastName + ", " + firstName);
+        }else if (birthday != -4000 && deathday == -4000){
+            return (lastName + ", " + firstName + " (b. " + birthday + ")");
+        } else {
+            return (lastName + ", " + firstName + " (" + birthday + "-" + deathday + ")");
+        }
+        
+    }
+
+
+}
