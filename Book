@@ -1,0 +1,95 @@
+
+public class Book {
+    
+    private String title = "UNKNOWN TITLE";
+    private Author author = new Author( "UNKNOWN AUTHOR", "" );
+    private int pubYear = -4000;
+    private String bookISBN = "UNKNOWN ISBN";
+    
+    
+
+    public Book(){
+
+    }
+    
+    public Book( String title){
+        this.title = title;
+    }
+    
+    public Book( String title, Author author){
+        this.title = title;
+        this.author = author;
+    }
+    
+    public void setTitle( String title ){
+        if(title.length() > 0){
+            this.title = title;
+        }
+    }
+    
+    public String getTitle(){
+        return title;
+    }
+    
+    public void setAuthor( Author author ){
+        this.author = author;
+    }
+    
+    public Author getAuthor(){
+        return author;
+    }
+    
+    public void setPubYear( int year ){
+        if(year > -2000 && year < 2021){
+            pubYear = year;
+        }
+    } 
+    
+    public int getPubYear(){
+        return pubYear;
+    }
+    
+    public void setISBN ( String isbn ){
+        if(isbn.length() == 10 ||
+           isbn.length() == 13){
+            this.bookISBN = isbn;
+        }
+    }
+    
+    public String getISBN(){
+        return bookISBN;
+    }
+    
+    public boolean sameAuthor( Book other ){
+        if (this.author == other.author){
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public boolean equals( Book other ){
+        if (this.bookISBN == other.bookISBN){
+            return true;
+        }
+        return false;
+        
+    }
+    
+    public String toString(){
+        if (this.pubYear == AuthorBookConstants.UNKNOWN_YEAR &&
+            this.author == AuthorBookConstants.UNKNOWN_AUTHOR){
+            return (title + ".");
+            
+        } else if (this.pubYear == AuthorBookConstants.UNKNOWN_YEAR){
+            return (title + ". " + author + ".");
+            
+        } else {
+            return (title + " (" + pubYear + "). " + author + ".");
+        }
+        
+    }
+    
+    
+
+}
